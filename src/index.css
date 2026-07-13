@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Open Runde";
+  src: url("./assets/fonts/OpenRunde-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Runde";
+  src: url("./assets/fonts/OpenRunde-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Runde";
+  src: url("./assets/fonts/OpenRunde-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Open Runde", ui-sans-serif, system-ui, sans-serif;
+
+  /* neutral scale — white, matches visitors.now's light theme */
+  --color-canvas: #ffffff;
+  --color-bg: #ffffff;
+  --color-bg-subtle: #fafafa;
+  --color-bg-1: #ffffff;
+  --color-bg-2: #f5f5f5;
+  --color-bg-3: #f0f0f0;
+  --color-bg-4: #e8e8e8;
+
+  --color-fg: #08060d;
+  --color-fg-1: #6b6375;
+  --color-fg-2: #8b8594;
+  --color-fg-3: #a8a3ae;
+
+  --color-border: #e5e4e7;
+  --color-border-strong: #d3d1d6;
+
+  /* brand accent — monotone black/gray, matching visitors.now's black-on-white identity */
+  --color-brand-1: #f5f5f5;
+  --color-brand-2: #ececed;
+  --color-brand-3: #c7c6ca;
+  --color-brand-4: #0b0b0f;
+  --color-brand-5: #29282e;
+  --color-brand-a: #0b0b0f14;
+
+  --color-ink: #0b0b0f;
+  --color-amber: #ff9500;
+  --color-blue: #0089ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-brand-a);
+  color: var(--color-fg);
+}
+
+@keyframes blob-a {
+  0%, 100% { transform: translate(-8%, -6%) scale(1); }
+  33% { transform: translate(10%, 8%) scale(1.15); }
+  66% { transform: translate(-4%, 12%) scale(0.9); }
+}
+
+@keyframes blob-b {
+  0%, 100% { transform: translate(6%, 10%) scale(1); }
+  40% { transform: translate(-12%, -4%) scale(1.1); }
+  75% { transform: translate(8%, -10%) scale(0.95); }
+}
+
+@keyframes blob-c {
+  0%, 100% { transform: translate(-10%, 4%) scale(1.05); }
+  50% { transform: translate(12%, -8%) scale(0.9); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none !important;
+  }
+}

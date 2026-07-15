@@ -1,7 +1,7 @@
 const columns = [
   {
     title: "Product",
-    links: ["Overview", "Live check-in", "Giving", "Groups", "Pricing"],
+    links: ["Overview", "Live check-in", "Messages", "Groups", "Pricing"],
   },
   {
     title: "Features",

@@ -1,7 +1,7 @@
 import SmoothScroll from "./components/SmoothScroll";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
-import GivingAttribution from "./components/GivingAttribution";
+import AttendanceBreakdown from "./components/AttendanceBreakdown";
 import LiveSection from "./components/LiveSection";
 import MemberProfiles from "./components/MemberProfiles";
 import EngagementScore from "./components/EngagementScore";
@@ -18,7 +18,7 @@ function App() {
       <Nav />
       <main className="min-h-screen bg-bg">
         <Hero />
-        <GivingAttribution />
+        <AttendanceBreakdown />
         <LiveSection />
         <MemberProfiles />
         <EngagementScore />

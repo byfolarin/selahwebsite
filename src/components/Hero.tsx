@@ -31,7 +31,7 @@ export default function Hero() {
 
         <p data-reveal className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-fg-1">
           Selah gives your church one place to know every member, track attendance
-          and giving in realtime, and see the moments that matter — before you
+          and engagement in realtime, and see the moments that matter — before you
           miss them.
         </p>
 
@@ -57,7 +57,7 @@ export default function Hero() {
         <div className="relative overflow-hidden py-16 sm:py-20">
           <GradientBlobs />
           <div className="relative z-10 mx-auto max-w-6xl px-6">
-            <div className="overflow-hidden rounded-2xl border border-border bg-bg-1">
+            <div className="overflow-hidden border border-border bg-bg-1">
               <img
                 src={membersScreenshot}
                 alt="Selah members dashboard"

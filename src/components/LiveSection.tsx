@@ -28,7 +28,7 @@ export default function LiveSection() {
         <SectionHeader
           eyebrow="Realtime"
           title="See who's checking in, live."
-          subtitle="Attendance, check-ins, and giving update the moment they happen — across every campus."
+          subtitle="Attendance, check-ins, and messages update the moment they happen — across every campus."
         />
 
         <div

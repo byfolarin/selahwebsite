@@ -17,7 +17,7 @@ export default function MemberProfiles() {
         <SectionHeader
           eyebrow="Member profiles"
           title="Every member, one profile."
-          subtitle="Attendance history, groups, giving, and notes — all in a single view your team can trust."
+          subtitle="Attendance history, groups, and notes — all in a single view your team can trust."
         />
 
         <div data-reveal className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

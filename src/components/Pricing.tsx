@@ -6,7 +6,7 @@ const plans = [
     name: "Starter",
     price: "$29",
     tagline: "For churches up to 250 members",
-    features: ["250 members", "Realtime check-in", "Giving attribution", "Email support"],
+    features: ["250 members", "Realtime check-in", "Group management", "Email support"],
     highlight: false,
   },
   {

@@ -3,7 +3,7 @@ import SectionHeader from "./SectionHeader";
 
 const rows = [
   { feature: "Realtime check-in", selah: true, a: false, b: true, c: false },
-  { feature: "Giving attribution", selah: true, a: true, b: false, c: false },
+  { feature: "Group management", selah: true, a: true, b: false, c: false },
   { feature: "Ministry health score", selah: true, a: false, b: false, c: false },
   { feature: "Unlimited volunteers", selah: true, a: false, b: true, c: true },
   { feature: "No setup fees", selah: true, a: false, b: false, c: true },

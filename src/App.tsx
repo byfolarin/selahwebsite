@@ -1,6 +1,7 @@
 import SmoothScroll from "./components/SmoothScroll";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
+import PlatformOverview from "./components/PlatformOverview";
 import AttendanceBreakdown from "./components/AttendanceBreakdown";
 import LiveSection from "./components/LiveSection";
 import MemberProfiles from "./components/MemberProfiles";
@@ -18,6 +19,7 @@ function App() {
       <Nav />
       <main className="min-h-screen bg-bg">
         <Hero />
+        <PlatformOverview />
         <AttendanceBreakdown />
         <LiveSection />
         <MemberProfiles />

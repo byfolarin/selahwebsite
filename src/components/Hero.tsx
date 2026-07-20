@@ -105,7 +105,7 @@ export default function Hero() {
             href="#cta"
             className="rounded-full bg-ink px-6 py-3 text-[14px] font-medium text-white transition-opacity hover:opacity-85"
           >
-            Start 14 day free trial
+            Start your 14-day free trial
           </a>
           <a
             href="#live"

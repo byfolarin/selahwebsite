@@ -1,9 +1,16 @@
 const links = [
-  { label: "Features", href: "#features" },
-  { label: "Live", href: "#live" },
-  { label: "Compare", href: "#compare" },
+  { label: "Features", href: "#features", dropdown: true },
   { label: "Pricing", href: "#pricing" },
+  { label: "Resources", href: "#faq", dropdown: true },
 ];
+
+function Chevron() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 export default function Nav() {
   return (
@@ -13,32 +20,22 @@ export default function Nav() {
           selah.
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-[14px] text-fg-1 transition-colors hover:text-fg"
+              className="flex items-center gap-1 text-[14px] text-fg-2 transition-colors hover:text-fg"
             >
               {l.label}
+              {l.dropdown && <Chevron />}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-5">
-          <a
-            href="#login"
-            className="hidden text-[14px] text-fg-1 transition-colors hover:text-fg sm:block"
-          >
-            Log in
-          </a>
-          <a
-            href="#cta"
-            className="rounded-full bg-ink px-4 py-2 text-[13.5px] font-medium text-white transition-opacity hover:opacity-85"
-          >
-            Register
-          </a>
-        </div>
+        <a href="#login" className="text-[14px] font-medium text-fg transition-colors hover:text-fg-1">
+          Sign in
+        </a>
       </div>
     </header>
   );

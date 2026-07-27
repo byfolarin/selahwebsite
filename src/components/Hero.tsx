@@ -95,9 +95,8 @@ export default function Hero() {
         </h1>
 
         <p data-reveal className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-fg-1">
-          Selah gives your church one place to know every member, track attendance
-          and engagement in realtime, and see the moments that matter — before you
-          miss them.
+          Selah gives your church one place to know every member, track
+          attendance, and catch what matters — in realtime.
         </p>
 
         <div data-reveal className="mt-9 flex items-center justify-center gap-3">

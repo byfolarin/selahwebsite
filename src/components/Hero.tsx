@@ -76,7 +76,7 @@ export default function Hero() {
 
         <h1
           data-reveal
-          className="mt-6 text-[36px] leading-[1.03] font-semibold text-fg sm:text-[68px]"
+          className="mt-6 text-[46px] leading-[1.03] font-semibold text-fg sm:text-[68px]"
           style={{ letterSpacing: "-0.035em" }}
         >
           Ministry-first

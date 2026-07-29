@@ -1,31 +1,7 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Open Runde";
-  src: url("./assets/fonts/OpenRunde-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Open Runde";
-  src: url("./assets/fonts/OpenRunde-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Open Runde";
-  src: url("./assets/fonts/OpenRunde-Semibold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme {
-  --font-sans: "Open Runde", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", "Helvetica Neue", Arial, sans-serif;
 
   /* neutral scale — white, matches visitors.now's light theme */
   --color-canvas: #ffffff;
@@ -79,6 +55,20 @@ body {
 ::selection {
   background: var(--color-brand-a);
   color: var(--color-fg);
+}
+
+.product-grid-panel {
+  background-color: #5d63e8;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.16) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+@media (max-width: 639px) {
+  .product-grid-panel {
+    background-size: 44px 44px;
+  }
 }
 
 @keyframes blob-a {

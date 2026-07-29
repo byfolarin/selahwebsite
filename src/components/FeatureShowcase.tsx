@@ -1,179 +1,222 @@
-import { useState } from "react";
-import { useReveal } from "../hooks/useReveal";
-
-function CheckInIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
-      <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
-      <rect x="4" y="5" width="16" height="14" rx="2" />
-    </svg>
-  );
-}
-function FollowUpIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
-      <path d="M4 12h11m0 0-4-4m4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="19" cy="12" r="2" />
-    </svg>
-  );
-}
-function GroupsIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
-      <circle cx="9" cy="8" r="3" />
-      <path d="M3 20c0-3 2.5-5 6-5s6 2 6 5M15 8a3 3 0 110 6M21 20c0-2.5-2-4.5-4-5" strokeLinecap="round" />
-    </svg>
-  );
-}
-function GivingIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
-      <path d="M12 20s-7-4.35-7-9.5A4.5 4.5 0 0112 6a4.5 4.5 0 017 4.5C19 15.65 12 20 12 20z" strokeLinejoin="round" />
-    </svg>
-  );
-}
-function ReportsIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
-      <path d="M4 20V10M12 20V4M20 20v-7" strokeLinecap="round" />
-    </svg>
-  );
-}
+import { useEffect, useRef, useState } from "react";
+import dashboard from "../assets/screenshots/dashboard.png";
+import events from "../assets/screenshots/events.png";
+import groups from "../assets/screenshots/groups.png";
+import members from "../assets/screenshots/members.png";
+import messages from "../assets/screenshots/messages.png";
+import testimonies from "../assets/screenshots/testimonies.png";
 
 const categories = [
   {
-    id: "checkin",
-    label: "Check-in",
-    icon: CheckInIcon,
-    heading: "Check-in.",
-    subtitle: "Get people through the door and known, automatically.",
-    feature: "Kiosk & QR",
-    description:
-      "Members tap in at the kiosk or scan a QR code from their phone. Guest check-ins are matched to member profiles the moment they happen — no roll call, no clipboard.",
-    steps: ["Scan", "Match", "Notify"],
+    id: "know",
+    label: "Know",
+    heading: "Know.",
+    intro: "One clear, living picture of every person in your church.",
+    features: [
+      {
+        title: "People.",
+        body: "Bring members, families, guests, and their history into one place. Find the person you need without hunting through lists.",
+        image: members,
+        alt: "Selah member directory",
+      },
+      {
+        title: "A church-wide view.",
+        body: "See what is happening across attendance, care, groups, and engagement the moment you sign in.",
+        image: dashboard,
+        alt: "Selah church dashboard",
+      },
+    ],
   },
   {
-    id: "followup",
-    label: "Follow-up",
-    icon: FollowUpIcon,
-    heading: "Follow-up.",
-    subtitle: "Nobody falls through the cracks after a first visit.",
-    feature: "Visitor routing",
-    description:
-      "First-time guests are flagged the moment they check in, and follow-ups route straight to the right pastor or volunteer — closed out when the conversation actually happens.",
-    steps: ["Flag", "Assign", "Close"],
+    id: "gather",
+    label: "Gather",
+    heading: "Gather.",
+    intro: "Plan every service and know who showed up.",
+    features: [
+      {
+        title: "Events & services.",
+        body: "Create services, meetings, and special events in seconds. Keep schedules and attendance connected from the start.",
+        image: events,
+        alt: "Selah events and services",
+      },
+    ],
   },
   {
-    id: "groups",
-    label: "Groups",
-    icon: GroupsIcon,
-    heading: "Groups.",
-    subtitle: "Every small group, tracked without a spreadsheet.",
-    feature: "Rosters & attendance",
-    description:
-      "Create a group and add members in seconds. Leaders mark attendance from their phone after each meeting, so participation never lives in someone's memory.",
-    steps: ["Create", "Meet", "Track"],
+    id: "connect",
+    label: "Connect",
+    heading: "Connect.",
+    intro: "Help people find their place and stay part of the conversation.",
+    features: [
+      {
+        title: "Groups.",
+        body: "Give every community a home. Leaders can manage people, meetings, and attendance without another spreadsheet.",
+        image: groups,
+        alt: "Selah groups",
+      },
+      {
+        title: "Messages.",
+        body: "Reach the whole church or the exact people who need to hear from you, from the same place you manage them.",
+        image: messages,
+        alt: "Selah messages",
+      },
+    ],
   },
   {
-    id: "giving",
-    label: "Giving",
-    icon: GivingIcon,
-    heading: "Giving.",
-    subtitle: "Every gift lands in the right fund, reconciled on its own.",
-    feature: "Online giving",
-    description:
-      "Members give from the app, the kiosk, or a shared link. Every gift is tagged to a fund and reconciled automatically, so nothing needs re-entering by hand.",
-    steps: ["Give", "Tag", "Reconcile"],
+    id: "care",
+    label: "Care",
+    heading: "Care.",
+    intro: "Make every story visible, so care can happen at the right time.",
+    features: [
+      {
+        title: "Testimonies.",
+        body: "Capture what God is doing across your church. Review, organise, and share the stories that would otherwise be lost.",
+        image: testimonies,
+        alt: "Selah testimonies",
+      },
+    ],
   },
   {
-    id: "reports",
-    label: "Reports",
-    icon: ReportsIcon,
-    heading: "Reports.",
-    subtitle: "The numbers your board actually asks for, ready on demand.",
-    feature: "Rollups & export",
-    description:
-      "Attendance, giving, and follow-up summarized by week or month. Send a clean export straight to your leadership team before the meeting starts.",
-    steps: ["Collect", "Summarize", "Share"],
+    id: "grow",
+    label: "Grow",
+    heading: "Grow.",
+    intro: "Turn everyday ministry activity into a clearer next step.",
+    features: [
+      {
+        title: "Insights.",
+        body: "See the patterns behind attendance and engagement. Know where people are thriving and where your team should pay attention.",
+        image: dashboard,
+        alt: "Selah ministry insights",
+      },
+    ],
   },
 ] as const;
 
-function FlowDiagram({ steps }: { steps: readonly string[] }) {
+function CategoryIcon({ id }: { id: (typeof categories)[number]["id"] }) {
+  const paths = {
+    know: (
+      <>
+        <circle cx="12" cy="8" r="3" />
+        <path d="M5.5 19c.5-4 2.7-6 6.5-6s6 2 6.5 6" />
+      </>
+    ),
+    gather: (
+      <>
+        <rect x="4" y="5.5" width="16" height="14" rx="1.5" />
+        <path d="M8 3.5v4M16 3.5v4M4 10h16M8 14h3M13 14h3" />
+      </>
+    ),
+    connect: (
+      <>
+        <circle cx="8" cy="9" r="3" />
+        <circle cx="17" cy="8" r="2.5" />
+        <path d="M2.5 19c.4-3.6 2.2-5.5 5.5-5.5s5.1 1.9 5.5 5.5M14 13c3.8 0 5.8 2 6.2 5" />
+      </>
+    ),
+    care: (
+      <path d="M12 20s-7-4.2-7-9.3A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7 3.7C19 15.8 12 20 12 20Z" />
+    ),
+    grow: (
+      <>
+        <path d="M5 19V13M12 19V9M19 19V4" />
+        <path d="m4 8 5-3 4 1 6-4" />
+      </>
+    ),
+  } as const;
+
   return (
-    <div
-      className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
-      style={{
-        backgroundColor: "#4265E7",
-        backgroundImage:
-          "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
-        backgroundSize: "28px 28px",
-      }}
-    >
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-8">
-        {steps.map((step, i) => (
-          <div key={step} className="flex flex-col items-center">
-            <div className="w-44 rounded-xl bg-[#FAFBF7] px-5 py-3.5 text-center text-[15px] font-medium text-[#14141c] shadow-sm sm:w-52">
-              {step}
-            </div>
-            {i < steps.length - 1 && (
-              <svg viewBox="0 0 2 28" className="h-6 w-0.5 text-white/60">
-                <line x1="1" y1="0" x2="1" y2="28" stroke="currentColor" strokeWidth="2" strokeDasharray="1 5" strokeLinecap="round" />
-              </svg>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
+    <svg viewBox="0 0 24 24" className="h-[17px] w-[17px]" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      {paths[id]}
+    </svg>
   );
 }
 
 export default function FeatureShowcase() {
-  const ref = useReveal<HTMLDivElement>();
-  const [active, setActive] = useState<(typeof categories)[number]["id"]>("checkin");
-  const current = categories.find((c) => c.id === active)!;
+  const sectionRef = useRef<HTMLElement>(null);
+  const [active, setActive] = useState<(typeof categories)[number]["id"]>("know");
+
+  useEffect(() => {
+    const nodes = categories
+      .map(({ id }) => document.getElementById(`feature-${id}`))
+      .filter((node): node is HTMLElement => Boolean(node));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id.replace("feature-", "") as typeof active);
+      },
+      { rootMargin: "-28% 0px -52% 0px", threshold: [0, 0.2, 0.5] }
+    );
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="bg-[#FAFBF7] px-6 py-20 sm:py-28">
-      <div ref={ref} className="mx-auto max-w-6xl">
-        <div data-reveal className="grid grid-cols-1 gap-10 lg:grid-cols-[220px_1fr] lg:gap-16">
-          <nav className="flex gap-2 overflow-x-auto lg:flex-col lg:gap-1 lg:overflow-visible">
+    <section ref={sectionRef} className="bg-[#f8f8f6] pl-5 text-[#171712] sm:pl-8">
+      <div className="w-full">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(180px,1fr)_minmax(0,3fr)] lg:gap-0">
+          <aside className="relative pt-20 sm:pt-28 lg:py-0">
+            <nav className="sticky top-0 flex gap-3 overflow-x-auto border-b border-black/15 pb-4 lg:h-screen lg:flex-col lg:items-start lg:justify-center lg:gap-2 lg:overflow-visible lg:border-0 lg:pb-0 lg:pl-[clamp(1rem,5vw,5rem)]">
             {categories.map((c) => {
-              const Icon = c.icon;
               const isActive = active === c.id;
               return (
-                <button
+                <a
                   key={c.id}
-                  onClick={() => setActive(c.id)}
-                  className={`flex shrink-0 items-center gap-2.5 rounded-lg px-3.5 py-2.5 text-left text-[14px] font-medium transition-colors lg:w-full ${
+                  href={`#feature-${c.id}`}
+                  title={c.label}
+                  aria-label={c.label}
+                  className={`group relative flex shrink-0 items-center gap-2 rounded-md px-3 py-2 text-[14px] transition-colors lg:h-9 lg:w-9 lg:justify-center lg:p-0 ${
                     isActive
-                      ? "bg-[#14141c] text-[#FAFBF7]"
-                      : "text-[#14141c]/50 hover:bg-[#14141c]/5 hover:text-[#14141c]"
+                      ? "bg-[#171712] text-white"
+                      : "bg-black/[0.045] text-black/45 hover:bg-black/[0.08] hover:text-black"
                   }`}
                 >
-                  <Icon />
-                  {c.label}
-                </button>
+                  <CategoryIcon id={c.id} />
+                  <span className="lg:hidden">{c.label}</span>
+                  <span className="pointer-events-none absolute left-12 hidden whitespace-nowrap rounded bg-[#171712] px-2 py-1 text-[11px] text-white opacity-0 transition-opacity group-hover:opacity-100 lg:block">
+                    {c.label}
+                  </span>
+                </a>
               );
             })}
-          </nav>
+            </nav>
+          </aside>
 
-          <div>
-            <h2 className="text-[44px] font-semibold leading-none tracking-tight text-[#14141c] sm:text-[64px]">
-              {current.heading}
-            </h2>
-            <p className="mt-4 max-w-md text-[16px] leading-relaxed text-[#14141c]/60">
-              {current.subtitle}
-            </p>
-
-            <div className="mt-12 grid grid-cols-1 items-center gap-8 sm:grid-cols-2 sm:gap-12">
-              <div>
-                <h3 className="text-[22px] font-semibold text-[#14141c]">{current.feature}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-[#14141c]/60">
-                  {current.description}
+          <div className="min-w-0 bg-[#CCF88E] pb-20 sm:pb-28 lg:border-l lg:border-black/15 lg:py-28 lg:pl-12">
+            {categories.map((category, categoryIndex) => (
+              <article
+                id={`feature-${category.id}`}
+                key={category.id}
+                className={`${categoryIndex ? "border-t border-black/15 pt-24 sm:pt-32 lg:-ml-12 lg:pl-12" : ""} mb-28 scroll-mt-28 last:mb-0 sm:mb-40`}
+              >
+                <h2 className="text-[42px] font-medium leading-[0.98] tracking-[-0.04em] sm:text-[60px] lg:text-[72px]">
+                  {category.heading}
+                </h2>
+                <p className="mt-5 max-w-2xl text-[17px] leading-[1.5] tracking-[-0.01em] text-black/58 sm:text-[19px]">
+                  {category.intro}
                 </p>
-              </div>
-              <FlowDiagram steps={current.steps} />
-            </div>
+
+                <div className="mt-16 space-y-24 sm:mt-24 sm:space-y-32">
+                  {category.features.map((feature) => (
+                    <section key={feature.title}>
+                      <div className="mb-8 grid gap-4 border-t border-black/20 pt-5 sm:grid-cols-2 sm:gap-10 lg:-ml-12 lg:pl-12">
+                        <h3 className="text-[21px] font-medium tracking-[-0.02em] sm:text-[22px]">
+                          {feature.title}
+                        </h3>
+                        <p className="max-w-xl text-[15px] leading-[1.6] text-black/55">
+                          {feature.body}
+                        </p>
+                      </div>
+                      <div className="product-grid-panel overflow-hidden p-4 sm:p-8 lg:px-10 lg:py-12">
+                        <div className="ml-auto w-[94%] overflow-hidden rounded-[6px] border border-black/10 bg-white shadow-[0_28px_80px_rgba(20,19,55,0.24)] sm:w-[88%]">
+                          <img src={feature.image} alt={feature.alt} className="block h-auto w-full" />
+                        </div>
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>

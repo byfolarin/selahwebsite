@@ -63,7 +63,7 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative pt-40 pb-0">
-      <div ref={ref} className="relative mx-auto max-w-4xl px-6 text-center">
+      <div ref={ref} className="relative mx-auto max-w-4xl px-3 text-center sm:px-6">
         <span
           data-reveal
           className="inline-flex items-center gap-2 rounded-full bg-bg-2 px-3.5 py-1.5 text-[13px] text-fg-1"

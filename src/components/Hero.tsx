@@ -29,21 +29,11 @@ const screenshots: Record<TabId, { src: string; alt: string }> = {
   groups: { src: groupsScreenshot, alt: "Selah groups" },
 };
 
-const TAB_DURATION = 5000;
-
 export default function Hero() {
   const ref = useReveal<HTMLDivElement>();
   const [active, setActive] = useState<TabId>("members");
   const [displayed, setDisplayed] = useState<TabId>("members");
   const imageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const i = tabs.findIndex((t) => t.id === active);
-      setActive(tabs[(i + 1) % tabs.length].id);
-    }, TAB_DURATION);
-    return () => clearTimeout(timer);
-  }, [active]);
 
   useEffect(() => {
     if (active === displayed) return;
@@ -121,23 +111,12 @@ export default function Hero() {
             <button
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              className={`shrink-0 whitespace-nowrap pb-2 text-[14px] font-medium transition-colors ${
+              className={`shrink-0 whitespace-nowrap text-[14px] font-medium transition-colors ${
                 active === tab.id ? "text-fg" : "text-fg-2 hover:text-fg-1"
               }`}
             >
               <span>
                 {tab.label} <span className="text-[11px] text-fg-3">{tab.num}</span>
-              </span>
-              <span className="relative mt-1.5 block h-[2px] w-full overflow-hidden bg-border">
-                {active === tab.id && (
-                  <span
-                    key={tab.id}
-                    className="absolute inset-y-0 left-0 block bg-ink"
-                    style={{
-                      animation: `tab-fill ${TAB_DURATION}ms linear forwards`,
-                    }}
-                  />
-                )}
               </span>
             </button>
           ))}

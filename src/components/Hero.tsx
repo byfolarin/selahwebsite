@@ -10,12 +10,12 @@ import messagesScreenshot from "../assets/screenshots/messages.png";
 import groupsScreenshot from "../assets/screenshots/groups.png";
 
 const tabs = [
-  { id: "dashboard", label: "Dashboard", num: "01" },
-  { id: "members", label: "Members", num: "02" },
-  { id: "events", label: "Events & Services", num: "03" },
-  { id: "testimonies", label: "Testimonies", num: "04" },
-  { id: "messages", label: "Messages", num: "05" },
-  { id: "groups", label: "Groups", num: "06" },
+  { id: "dashboard", label: "Dashboard" },
+  { id: "members", label: "Members" },
+  { id: "events", label: "Events & Services" },
+  { id: "testimonies", label: "Testimonies" },
+  { id: "messages", label: "Messages" },
+  { id: "groups", label: "Groups" },
 ] as const;
 
 type TabId = (typeof tabs)[number]["id"];
@@ -115,9 +115,7 @@ export default function Hero() {
                 active === tab.id ? "text-fg" : "text-fg-2 hover:text-fg-1"
               }`}
             >
-              <span>
-                {tab.label} <span className="text-[11px] text-fg-3">{tab.num}</span>
-              </span>
+              <span>{tab.label}</span>
             </button>
           ))}
         </div>

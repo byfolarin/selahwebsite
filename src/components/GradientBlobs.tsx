@@ -1,7 +1,7 @@
 export default function GradientBlobs() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[#f2f9f3]" />
+      <div className="absolute inset-0 bg-[#284C35]" />
       <div
         className="blob absolute -left-[10%] -top-[20%] h-[520px] w-[520px] rounded-full opacity-70 blur-[110px]"
         style={{ background: "#3fb75e", animation: "blob-a 22s ease-in-out infinite" }}

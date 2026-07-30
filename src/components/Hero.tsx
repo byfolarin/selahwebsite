@@ -62,8 +62,8 @@ export default function Hero() {
   }, [displayed]);
 
   return (
-    <section id="top" className="relative pt-40 pb-0">
-      <div ref={ref} className="relative mx-auto max-w-4xl px-3 text-center sm:px-6">
+    <section id="top" className="hero-open-sans relative bg-[#F8F8F6] pt-32 pb-0">
+      <div ref={ref} className="relative mx-auto w-full max-w-4xl px-3 text-center sm:px-6">
         <span
           data-reveal
           className="inline-flex items-center gap-2 rounded-full bg-bg-2 px-3.5 py-1.5 text-[13px] text-fg-1"
@@ -76,7 +76,7 @@ export default function Hero() {
 
         <h1
           data-reveal
-          className="mt-6 text-[40px] leading-[1.03] font-semibold tracking-[-0.045em] text-fg sm:text-[68px] sm:tracking-[-0.035em]"
+          className="mt-6 text-[40px] leading-[1.03] font-semibold tracking-[-0.055em] text-fg sm:text-[68px] sm:tracking-[-0.045em]"
         >
           Ministry-first
           <br />
@@ -104,27 +104,50 @@ export default function Hero() {
         </div>
       </div>
 
-      <div data-reveal className="mx-auto mt-16 max-w-6xl px-6">
-        <div className="flex max-w-full items-center justify-center gap-6 overflow-x-auto py-4">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActive(tab.id)}
-              className={`shrink-0 whitespace-nowrap text-[14px] font-medium transition-colors ${
-                active === tab.id ? "text-fg" : "text-fg-2 hover:text-fg-1"
-              }`}
-            >
-              <span>{tab.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div data-reveal className="relative mt-4">
-        <div className="relative overflow-hidden pb-24">
+      <div data-reveal className="relative mt-16">
+        <div className="relative overflow-hidden pt-24 pb-24 sm:pt-28">
           <GradientBlobs />
 
-          <div className="relative z-10 mx-auto max-w-6xl px-6 pt-8">
+          <div className="absolute inset-x-0 -top-px z-20 mx-auto flex h-[53px] w-fit max-w-[calc(100vw-64px)] items-start rounded-b-[32px] bg-[#F8F8F6] px-5">
+            <div
+              aria-hidden
+              className="absolute top-0 -left-[31px] h-8 w-8"
+              style={{
+                background:
+                  "radial-gradient(circle at 0% 100%, transparent 32px, #F8F8F6 32.5px)",
+              }}
+            />
+            <div
+              aria-hidden
+              className="absolute top-0 -right-[31px] h-8 w-8"
+              style={{
+                background:
+                  "radial-gradient(circle at 100% 100%, transparent 32px, #F8F8F6 32.5px)",
+              }}
+            />
+
+            <div className="flex max-w-full items-center overflow-x-auto sm:justify-center">
+              {tabs.map((tab) => {
+                const isActive = active === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActive(tab.id)}
+                    className={`relative h-9 shrink-0 whitespace-nowrap px-3 text-[14px] font-medium transition-colors ${
+                      isActive ? "text-fg" : "text-fg-2 hover:text-fg"
+                    }`}
+                  >
+                    {isActive && (
+                      <span className="absolute inset-0 rounded-full bg-black/[0.055]" />
+                    )}
+                    <span className="relative">{tab.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
             <div className="overflow-hidden rounded-2xl border border-border bg-bg-1">
               <div ref={imageRef}>
                 <img

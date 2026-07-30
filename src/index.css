@@ -57,6 +57,11 @@ body {
   color: var(--color-fg);
 }
 
+.hero-open-sans {
+  font-family: "Open Sans Variable", Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
 .product-grid-panel {
   background-color: #5d63e8;
   background-image:

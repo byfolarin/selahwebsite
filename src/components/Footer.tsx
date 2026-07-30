@@ -61,7 +61,7 @@ export default function Footer() {
           aria-label="Selah"
           className="mt-10 select-none text-center text-[34vw] font-semibold leading-[0.68] tracking-[-0.085em] text-[#CCF88E] sm:text-[28vw] lg:text-[400px]"
         >
-          SELAH
+          Selah
         </div>
       </div>
     </footer>

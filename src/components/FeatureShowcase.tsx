@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import dashboard from "../assets/screenshots/dashboard.png";
 import events from "../assets/screenshots/events.png";
 import groups from "../assets/screenshots/groups.png";
 import members from "../assets/screenshots/members.png";
 import messages from "../assets/screenshots/messages.png";
 import testimonies from "../assets/screenshots/testimonies.png";
+import communityBanner from "../assets/church-community-banner.png";
 
 const categories = [
   {
@@ -156,39 +157,50 @@ export default function FeatureShowcase() {
       <div className="w-full">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(180px,1fr)_minmax(0,3fr)] lg:gap-0">
           <aside className="relative pt-20 sm:pt-28 lg:py-0">
-            <nav className="sticky top-0 flex gap-3 overflow-x-auto border-b border-black/15 pb-4 lg:h-screen lg:flex-col lg:items-start lg:justify-center lg:gap-2 lg:overflow-visible lg:border-0 lg:pb-0 lg:pl-[clamp(1rem,5vw,5rem)]">
-            {categories.map((c) => {
-              const isActive = active === c.id;
-              return (
-                <a
-                  key={c.id}
-                  href={`#feature-${c.id}`}
-                  title={c.label}
-                  aria-label={c.label}
-                  className={`group relative flex shrink-0 items-center gap-2 rounded-md px-3 py-2 text-[14px] transition-colors lg:h-9 lg:w-9 lg:justify-center lg:p-0 ${
-                    isActive
-                      ? "bg-[#171712] text-white"
-                      : "bg-black/[0.045] text-black/45 hover:bg-black/[0.08] hover:text-black"
-                  }`}
-                >
-                  <CategoryIcon id={c.id} />
-                  <span className="lg:hidden">{c.label}</span>
-                  <span className="pointer-events-none absolute left-12 hidden whitespace-nowrap rounded bg-[#171712] px-2 py-1 text-[11px] text-white opacity-0 transition-opacity group-hover:opacity-100 lg:block">
-                    {c.label}
-                  </span>
-                </a>
-              );
-            })}
+            <nav className="sticky top-0 z-30 flex overflow-x-auto border-b border-black/15 pb-4 lg:h-screen lg:items-center lg:overflow-visible lg:border-0 lg:pb-0 lg:pl-[clamp(1rem,5vw,5rem)]">
+              <div className="flex gap-3 lg:flex-col lg:gap-1.5 lg:rounded-xl lg:border lg:border-black/10 lg:bg-[#f8f8f6]/90 lg:p-2 lg:shadow-[0_12px_32px_rgba(23,23,18,0.08)] lg:backdrop-blur-md">
+                {categories.map((c) => {
+                  const isActive = active === c.id;
+                  return (
+                    <a
+                      key={c.id}
+                      href={`#feature-${c.id}`}
+                      title={c.label}
+                      aria-label={c.label}
+                      className={`group relative flex shrink-0 items-center gap-2 rounded-md px-3 py-2 text-[14px] transition-colors lg:h-9 lg:w-9 lg:justify-center lg:p-0 ${
+                        isActive
+                          ? "bg-[#171712] text-white"
+                          : "bg-black/[0.045] text-black/45 hover:bg-black/[0.08] hover:text-black"
+                      }`}
+                    >
+                      <CategoryIcon id={c.id} />
+                      <span className="lg:hidden">{c.label}</span>
+                      <span className="pointer-events-none absolute left-12 hidden whitespace-nowrap rounded bg-[#171712] px-2 py-1 text-[11px] text-white opacity-0 transition-opacity group-hover:opacity-100 lg:block">
+                        {c.label}
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
             </nav>
           </aside>
 
           <div className="min-w-0 bg-[#CCF88E] pb-20 sm:pb-28 lg:border-l lg:border-black/15 lg:py-28 lg:pl-12">
             {categories.map((category, categoryIndex) => (
-              <article
-                id={`feature-${category.id}`}
-                key={category.id}
-                className={`${categoryIndex ? "border-t border-black/15 pt-24 sm:pt-32 lg:-ml-12 lg:pl-12" : ""} mb-28 scroll-mt-28 last:mb-0 sm:mb-40`}
-              >
+              <Fragment key={category.id}>
+                {categoryIndex === 2 && (
+                  <div className="feature-image-break mb-28 overflow-hidden sm:mb-40">
+                    <img
+                      src={communityBanner}
+                      alt="Church community connecting after a service"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                )}
+                <article
+                  id={`feature-${category.id}`}
+                  className={`${categoryIndex ? "border-t border-black/15 pt-24 sm:pt-32 lg:-ml-12 lg:pl-12" : ""} mb-28 scroll-mt-28 last:mb-0 sm:mb-40`}
+                >
                 <h2 className="text-[42px] font-medium leading-[0.98] tracking-[-0.04em] sm:text-[60px] lg:text-[72px]">
                   {category.heading}
                 </h2>
@@ -215,7 +227,8 @@ export default function FeatureShowcase() {
                     </section>
                   ))}
                 </div>
-              </article>
+                </article>
+              </Fragment>
             ))}
           </div>
         </div>

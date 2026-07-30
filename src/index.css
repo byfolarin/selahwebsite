@@ -62,6 +62,18 @@ body {
   letter-spacing: -0.02em;
 }
 
+.feature-image-break {
+  width: 100vw;
+  height: clamp(360px, 44vw, 720px);
+  margin-left: -1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .feature-image-break {
+    margin-left: calc(-33.333333% - 6rem);
+  }
+}
+
 .product-grid-panel {
   background-color: #5d63e8;
   background-image:

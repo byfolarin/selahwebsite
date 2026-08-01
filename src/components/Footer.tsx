@@ -59,9 +59,9 @@ export default function Footer() {
 
         <div
           aria-label="Selah"
-          className="mt-10 select-none text-center text-[34vw] font-semibold leading-[0.68] tracking-[-0.085em] text-[#CCF88E] sm:text-[28vw] lg:text-[400px]"
+          className="footer-wordmark mt-10 w-full select-none whitespace-nowrap text-center font-semibold leading-[0.68] tracking-[-0.085em] text-[#CCF88E]"
         >
-          Selah
+          selah
         </div>
       </div>
     </footer>

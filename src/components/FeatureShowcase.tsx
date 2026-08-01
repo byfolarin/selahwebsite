@@ -159,24 +159,24 @@ export default function FeatureShowcase() {
           <aside className="relative pt-20 sm:pt-28 lg:py-0">
             <nav className="sticky top-0 z-30 flex overflow-x-auto border-b border-black/15 pb-4 lg:h-screen lg:items-center lg:overflow-visible lg:border-0 lg:pb-0 lg:pl-[clamp(1rem,5vw,5rem)]">
               <div className="flex gap-3 lg:flex-col lg:gap-1.5 lg:rounded-xl lg:border lg:border-black/10 lg:bg-[#f8f8f6]/90 lg:p-2 lg:shadow-[0_12px_32px_rgba(23,23,18,0.08)] lg:backdrop-blur-md">
-                {categories.map((c) => {
-                  const isActive = active === c.id;
+                {categories.map((category) => {
+                  const isActive = active === category.id;
                   return (
                     <a
-                      key={c.id}
-                      href={`#feature-${c.id}`}
-                      title={c.label}
-                      aria-label={c.label}
+                      key={category.id}
+                      href={`#feature-${category.id}`}
+                      title={category.label}
+                      aria-label={category.label}
                       className={`group relative flex shrink-0 items-center gap-2 rounded-md px-3 py-2 text-[14px] transition-colors lg:h-9 lg:w-9 lg:justify-center lg:p-0 ${
                         isActive
                           ? "bg-[#171712] text-white"
                           : "bg-black/[0.045] text-black/45 hover:bg-black/[0.08] hover:text-black"
                       }`}
                     >
-                      <CategoryIcon id={c.id} />
-                      <span className="lg:hidden">{c.label}</span>
+                      <CategoryIcon id={category.id} />
+                      <span className="lg:hidden">{category.label}</span>
                       <span className="pointer-events-none absolute left-12 hidden whitespace-nowrap rounded bg-[#171712] px-2 py-1 text-[11px] text-white opacity-0 transition-opacity group-hover:opacity-100 lg:block">
-                        {c.label}
+                        {category.label}
                       </span>
                     </a>
                   );
@@ -201,32 +201,32 @@ export default function FeatureShowcase() {
                   id={`feature-${category.id}`}
                   className={`${categoryIndex ? "border-t border-black/15 pt-24 sm:pt-32 lg:-ml-12 lg:pl-12" : ""} mb-28 scroll-mt-28 last:mb-0 sm:mb-40`}
                 >
-                <h2 className="text-[42px] font-medium leading-[0.98] tracking-[-0.04em] sm:text-[60px] lg:text-[72px]">
-                  {category.heading}
-                </h2>
-                <p className="mt-5 max-w-2xl text-[17px] leading-[1.5] tracking-[-0.01em] text-black/58 sm:text-[19px]">
-                  {category.intro}
-                </p>
+                  <h2 className="text-[42px] font-medium leading-[0.98] tracking-[-0.04em] sm:text-[60px] lg:text-[72px]">
+                    {category.heading}
+                  </h2>
+                  <p className="mt-5 max-w-2xl text-[17px] leading-[1.5] tracking-[-0.01em] text-black/58 sm:text-[19px]">
+                    {category.intro}
+                  </p>
 
-                <div className="mt-16 space-y-24 sm:mt-24 sm:space-y-32">
-                  {category.features.map((feature) => (
-                    <section key={feature.title}>
-                      <div className="mb-8 grid gap-4 border-t border-black/20 pt-5 sm:grid-cols-2 sm:gap-10 lg:-ml-12 lg:pl-12">
-                        <h3 className="text-[21px] font-medium tracking-[-0.02em] sm:text-[22px]">
-                          {feature.title}
-                        </h3>
-                        <p className="max-w-xl text-[15px] leading-[1.6] text-black/55">
-                          {feature.body}
-                        </p>
-                      </div>
-                      <div className="product-grid-panel overflow-hidden p-4 sm:p-8 lg:px-10 lg:py-12">
-                        <div className="ml-auto w-[94%] overflow-hidden rounded-[6px] border border-black/10 bg-white shadow-[0_28px_80px_rgba(20,19,55,0.24)] sm:w-[88%]">
-                          <img src={feature.image} alt={feature.alt} className="block h-auto w-full" />
+                  <div className="mt-16 space-y-24 sm:mt-24 sm:space-y-32">
+                    {category.features.map((feature) => (
+                      <section key={feature.title}>
+                        <div className="mb-8 grid gap-4 border-t border-black/20 pt-5 sm:grid-cols-2 sm:gap-10 lg:-ml-12 lg:pl-12">
+                          <h3 className="text-[21px] font-medium tracking-[-0.02em] sm:text-[22px]">
+                            {feature.title}
+                          </h3>
+                          <p className="max-w-xl text-[15px] leading-[1.6] text-black/55">
+                            {feature.body}
+                          </p>
                         </div>
-                      </div>
-                    </section>
-                  ))}
-                </div>
+                        <div className="product-grid-panel overflow-hidden p-4 sm:p-8 lg:px-10 lg:py-12">
+                          <div className="ml-auto w-[94%] overflow-hidden rounded-[6px] border border-black/10 bg-white shadow-[0_28px_80px_rgba(20,19,55,0.24)] sm:w-[88%]">
+                            <img src={feature.image} alt={feature.alt} className="block h-auto w-full" />
+                          </div>
+                        </div>
+                      </section>
+                    ))}
+                  </div>
                 </article>
               </Fragment>
             ))}

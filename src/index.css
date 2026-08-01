@@ -68,6 +68,10 @@ body {
   margin-left: -1.25rem;
 }
 
+.footer-wordmark {
+  font-size: clamp(7rem, calc((100vw - 3rem) / 2.25), 31.25rem);
+}
+
 @media (min-width: 1024px) {
   .feature-image-break {
     margin-left: calc(-33.333333% - 6rem);
